@@ -1,0 +1,38 @@
+.nav {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: whitesmoke;
+  padding: 1rem 5rem;
+  z-index: 1000;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  background: white;
+  width: 100%;
+}
+
+.logo {
+  width: 160px;
+  min-width: 160px;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  &-item {
+    display: block;
+    &:hover {
+      background: #ff2;
+    }
+  }
+}
