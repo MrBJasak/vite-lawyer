@@ -1,34 +1,86 @@
+import { AiOutlineFieldTime, AiOutlinePhone, AiTwotoneMail } from 'react-icons/ai';
 import { FacebookIcon } from '../../icons/FacebookIcon';
 import { Button } from '../Button/Buttons';
-import styles from './Nav.styles.module.scss';
+import './style.scss';
+
+const topBarItems = [
+  {
+    value: '+48 123 456 789',
+    icon: <AiOutlinePhone className='icon' />,
+    href: '#',
+    type: 'phone',
+  },
+  {
+    value: 'jondoe@gmail.com',
+    icon: <AiTwotoneMail className='icon' />,
+    href: '#',
+    type: 'email',
+  },
+  { value: 'Pon-Pt: 09:00-16:00', icon: <AiOutlineFieldTime className='icon' />, href: '#', type: 'time' },
+];
+
+type TopBarListProps = typeof topBarItems;
 
 export const NavBar = () => {
-  const navItems = ['Home', 'About', 'Contact', 'Kancelaria', 'Usługi'];
+  const navItems = ['Strona główna', 'O mnie', 'Kancelaria', 'Usługi', 'Kontakt'];
 
   return (
-    <nav className={styles.nav}>
-      <div>Logo</div>
-      <div className={styles.container}>
-        <ul className={styles['nav-list']}>
-          {navItems.map((item) => {
-            return (
-              <li key={item} className={styles['nav-list-item']}>
-                {item}
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-      <div className={styles.buttons}>
-        <div>
-          <Button variant='outline'>call me</Button>
-        </div>
-        <div>
-          <a className={styles['nav-icon']} href='/'>
-            <FacebookIcon />
-          </a>
+    <>
+      <div className='top-bar'>
+        <div className='top-bar-container'>
+          <div className='top-bar-container-inner'>
+            <TopBarList items={topBarItems} />
+            <div className='top-bar-buttons'>
+              <div>
+                <FacebookIcon width='32px' height='32px' />
+              </div>
+              <div>
+                <Button>Umów się</Button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </nav>
+      <header className='header'>
+        <div className='header-container'>
+          <div className='header-container-inner'>
+            <div className='header-logo'>logo</div>
+            <NavBarList items={navItems} />
+          </div>
+        </div>
+      </header>
+    </>
   );
 };
+
+const TopBarList = ({ items }: { items: TopBarListProps }) => {
+  return (
+    <div className='topbar-list'>
+      {items.map((item, index) => (
+        <div key={index} className='topbar-item'>
+          {item.icon}
+          <a href={item.href} className='link'>
+            {item.value}
+          </a>
+          {index !== items.length - 1 && <span className='separator'>&middot;</span>}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const NavBarList = ({ items }: { items: string[] }) => {
+  return (
+    <div className='header-nav-items'>
+      {items.map((item, index) => (
+        <div className='header-nav-item'>
+          <a key={index} href='#'>
+            {item}
+          </a>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// sticky header effect
