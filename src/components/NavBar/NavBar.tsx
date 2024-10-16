@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { AiOutlineFieldTime, AiOutlinePhone, AiTwotoneMail } from 'react-icons/ai';
+import { AiOutlineClose, AiOutlineFieldTime, AiOutlineMenu, AiOutlinePhone, AiTwotoneMail } from 'react-icons/ai';
 import { FacebookIcon } from '../../icons/FacebookIcon';
 import { Button } from '../Button/Buttons';
 import './style.scss';
@@ -24,6 +24,11 @@ type TopBarListProps = typeof topBarItems;
 
 export const NavBar = () => {
   const [isSticky, setIsSticky] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,10 +63,29 @@ export const NavBar = () => {
         <div className='header-container'>
           <div className='header-container-inner'>
             <div className='header-logo'>logo</div>
-            <NavBarList items={navItems} />
+            <div className='burger-menu' onClick={toggleSidebar}>
+              <AiOutlineMenu />
+            </div>
+            <div className='header-nav-items'>
+              <NavBarList items={navItems} />
+            </div>
           </div>
         </div>
       </header>
+
+      {/* Sidebar for mobile screens */}
+      <div className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
+        <div className='close-btn' onClick={toggleSidebar}>
+          <AiOutlineClose />
+        </div>
+        <div className='sidebar-nav-items'>
+          {navItems.map((item, index) => (
+            <div key={index} className='sidebar-nav-item'>
+              <a href='#'>{item}</a>
+            </div>
+          ))}
+        </div>
+      </div>
     </>
   );
 };
@@ -84,7 +108,7 @@ const TopBarList = ({ items }: { items: TopBarListProps }) => {
 
 const NavBarList = ({ items }: { items: string[] }) => {
   return (
-    <div className='header-nav-items'>
+    <>
       {items.map((item, index) => (
         <div className='header-nav-item'>
           <a key={index} href='#'>
@@ -92,8 +116,6 @@ const NavBarList = ({ items }: { items: string[] }) => {
           </a>
         </div>
       ))}
-    </div>
+    </>
   );
 };
-
-// sticky header effect

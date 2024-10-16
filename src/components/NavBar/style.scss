@@ -70,6 +70,10 @@ a {
   }
 }
 
+.sidebar {
+  display: none;
+}
+
 .header {
   background-color: #fff;
 
@@ -118,33 +122,101 @@ a {
     .header-nav-items {
       display: flex;
       align-items: center;
+    }
 
-      .header-nav-item {
-        margin-right: 2rem;
-        font-size: 0.875rem;
+    .header-nav-item {
+      margin-right: 2rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #9ca3af;
+      text-decoration: none;
+      overflow: hidden;
+      border-bottom: 3px solid transparent;
+      transition: 0.3s;
+
+      a:hover {
+        color: black;
+      }
+
+      &::after {
+        padding-bottom: 0.25rem;
+        display: block;
+        content: '';
+        border-bottom: solid 2px $lawyer;
+        transform: scaleX(0);
+        transition: transform 250ms ease-in-out;
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+.burger-menu {
+  display: none;
+}
+
+@media (max-width: 1140px) {
+  .top-bar {
+    display: none;
+  }
+
+  .header-nav-items {
+    display: none;
+    align-items: center;
+  }
+
+  .header {
+    &-container {
+      &-inner {
+        .header-nav-items {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .burger-menu {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .sidebar {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease-in-out;
+    z-index: 999;
+    padding: 2rem;
+
+    &.open {
+      right: 0;
+    }
+
+    .close-btn {
+      font-size: 1.5rem;
+      cursor: pointer;
+      text-align: right;
+    }
+
+    .sidebar-nav-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      .sidebar-nav-item {
+        font-size: 1.125rem;
         font-weight: 500;
-        color: #9ca3af;
-        text-decoration: none;
-        overflow: hidden;
-        border-bottom: 3px solid transparent;
-        transition: 0.3s;
-
-        a:hover {
-          color: black;
-        }
-
-        &::after {
-          padding-bottom: 0.25rem;
-          display: block;
-          content: '';
-          border-bottom: solid 2px $lawyer;
-          transform: scaleX(0);
-          transition: transform 250ms ease-in-out;
-        }
-
-        &:hover::after {
-          transform: scaleX(1);
-        }
+        color: #333;
       }
     }
   }
