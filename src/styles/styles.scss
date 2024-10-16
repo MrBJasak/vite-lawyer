@@ -1,5 +1,6 @@
 @import './mixins';
 @import './fonts';
+@import './colors';
 
 html,
 body,
@@ -109,4 +110,8 @@ ul {
   width: 100%;
   height: 100%;
   padding-top: 5rem;
+}
+
+.no-cursor {
+  cursor: default;
 }

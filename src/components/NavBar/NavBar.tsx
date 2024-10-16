@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { AiOutlineFieldTime, AiOutlinePhone, AiTwotoneMail } from 'react-icons/ai';
 import { FacebookIcon } from '../../icons/FacebookIcon';
 import { Button } from '../Button/Buttons';
@@ -6,7 +7,7 @@ import './style.scss';
 const topBarItems = [
   {
     value: '+48 123 456 789',
-    icon: <AiOutlinePhone className='icon' />,
+    icon: <AiOutlinePhone className='icon' />, //change icon to better looking
     href: '#',
     type: 'phone',
   },
@@ -22,6 +23,18 @@ const topBarItems = [
 type TopBarListProps = typeof topBarItems;
 
 export const NavBar = () => {
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const topBarHeight = document.querySelector('.top-bar')?.clientHeight || 0;
+      setIsSticky(window.scrollY > topBarHeight);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const navItems = ['Strona główna', 'O mnie', 'Kancelaria', 'Usługi', 'Kontakt'];
 
   return (
@@ -41,7 +54,7 @@ export const NavBar = () => {
           </div>
         </div>
       </div>
-      <header className='header'>
+      <header className={`header ${isSticky ? 'sticky' : ''}`}>
         <div className='header-container'>
           <div className='header-container-inner'>
             <div className='header-logo'>logo</div>
@@ -59,7 +72,7 @@ const TopBarList = ({ items }: { items: TopBarListProps }) => {
       {items.map((item, index) => (
         <div key={index} className='topbar-item'>
           {item.icon}
-          <a href={item.href} className='link'>
+          <a href={item.href} className={item.type !== 'time' ? 'link' : 'no-cursor'}>
             {item.value}
           </a>
           {index !== items.length - 1 && <span className='separator'>&middot;</span>}
