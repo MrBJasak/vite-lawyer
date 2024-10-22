@@ -1,26 +1,12 @@
 import { useEffect, useState } from 'react';
-import { AiOutlineClose, AiOutlineFieldTime, AiOutlineMenu, AiOutlinePhone, AiTwotoneMail } from 'react-icons/ai';
-import { FacebookIcon } from '../../icons/FacebookIcon';
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import { FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { MdFacebook } from 'react-icons/md';
+import { Link } from 'react-router-dom';
+import logo from '../../assets/logo/Logo.jpg';
 import { Button } from '../Button/Buttons';
 import './style.scss';
-
-const topBarItems = [
-  {
-    value: '+48 123 456 789',
-    icon: <AiOutlinePhone className='icon' />, //change icon to better looking
-    href: '#',
-    type: 'phone',
-  },
-  {
-    value: 'jondoe@gmail.com',
-    icon: <AiTwotoneMail className='icon' />,
-    href: '#',
-    type: 'email',
-  },
-  { value: 'Pon-Pt: 09:00-16:00', icon: <AiOutlineFieldTime className='icon' />, href: '#', type: 'time' },
-];
-
-type TopBarListProps = typeof topBarItems;
+import { navItems, topBarItems, TopBarListProps } from './types';
 
 export const NavBar = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -40,8 +26,6 @@ export const NavBar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = ['Strona główna', 'O mnie', 'Kancelaria', 'Usługi', 'Kontakt'];
-
   return (
     <>
       <div className='top-bar'>
@@ -49,9 +33,7 @@ export const NavBar = () => {
           <div className='top-bar-container-inner'>
             <TopBarList items={topBarItems} />
             <div className='top-bar-buttons'>
-              <div>
-                <FacebookIcon width='32px' height='32px' />
-              </div>
+              <SocialIcons />
               <div>
                 <Button>Umów się</Button>
               </div>
@@ -62,7 +44,11 @@ export const NavBar = () => {
       <header className={`header ${isSticky ? 'sticky' : ''}`}>
         <div className='header-container'>
           <div className='header-container-inner'>
-            <div className='header-logo'>logo</div>
+            <div className='header-logo'>
+              <Link to='/'>
+                <img src={logo} alt='Logo Agnieszka Jasak' />
+              </Link>
+            </div>
             <div className='burger-menu' onClick={toggleSidebar}>
               <AiOutlineMenu />
             </div>
@@ -81,7 +67,9 @@ export const NavBar = () => {
         <div className='sidebar-nav-items'>
           {navItems.map((item, index) => (
             <div key={index} className='sidebar-nav-item'>
-              <a href='#'>{item}</a>
+              <Link onClick={toggleSidebar} to={item.path}>
+                {item.label}
+              </Link>
             </div>
           ))}
         </div>
@@ -106,16 +94,39 @@ const TopBarList = ({ items }: { items: TopBarListProps }) => {
   );
 };
 
-const NavBarList = ({ items }: { items: string[] }) => {
+const NavBarList = ({ items }: { items: { label: string; path: string }[] }) => {
   return (
     <>
       {items.map((item, index) => (
-        <div className='header-nav-item'>
-          <a key={index} href='#'>
-            {item}
-          </a>
+        <div className='header-nav-item' key={index}>
+          <Link to={item.path}>{item.label}</Link>
         </div>
       ))}
     </>
+  );
+};
+
+const SocialIcons = () => {
+  const iconStyle = {
+    color: 'green',
+    fontSize: '1.5rem',
+  };
+
+  const socialIcons = [
+    { name: 'facebook', icon: <MdFacebook style={iconStyle} />, link: 'https://facebook.com' },
+    { name: 'twitter', icon: <FaTwitter style={iconStyle} />, link: 'https://twitter.com' },
+    { name: 'linkedin', icon: <FaLinkedin style={iconStyle} />, link: 'https://linkedin.com' },
+  ];
+
+  return (
+    <div style={{ display: 'flex', gap: '10px' }}>
+      {socialIcons.map((socialIcon, index) => {
+        return (
+          <a key={index} href={socialIcon.link} target='_blank' rel='noopener noreferrer'>
+            {socialIcon.icon}
+          </a>
+        );
+      })}
+    </div>
   );
 };
