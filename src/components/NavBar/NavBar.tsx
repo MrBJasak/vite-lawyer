@@ -19,7 +19,8 @@ export const NavBar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const topBarHeight = document.querySelector('.top-bar')?.clientHeight || 0;
-      setIsSticky(window.scrollY > topBarHeight);
+      const position = window.scrollY;
+      setIsSticky(position > topBarHeight);
     };
 
     window.addEventListener('scroll', handleScroll);
