@@ -1,7 +1,7 @@
-import { PrivacyPolitics } from "../components/PrivacyPolitics/PrivacyPolitcs"
+import { PrivacyPolicy } from "../components/PrivacyPolitics/PrivacyPolicy"
 
-export const PrivacyPoliticsContainer = () => {
+export const PrivacyPolicyContainer = () => {
     return (
-        <PrivacyPolitics />
+        <PrivacyPolicy />
     )
 }

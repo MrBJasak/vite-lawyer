@@ -3,48 +3,56 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),    url('../../assets/radomsko.jpeg');
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../assets/radomsko.jpeg');
   background-size: cover;
   background-position: center;
-  
+
   .header_content {
     text-align: center;
     color: white;
     padding: 2rem;
     max-width: 800px;
-    
+
     .header_titles {
       margin-bottom: 2rem;
-      
+
+      @media (max-width: 480px) {
+        margin-bottom: 0.5rem;
+      }
+
       .header_main_title {
         text-transform: uppercase;
         color: rgb(182, 162, 129);
         line-height: 38px;
         letter-spacing: 2px;
         font-weight: 400;
-    
+
         text-align: inherit;
         opacity: 1;
         font-size: 2.5rem;
         margin-bottom: 2rem;
         text-align: center;
       }
-      
+
       .header_sub_title {
-        font-size: 2rem;
-        font-weight: 500;
         font-size: 2.5rem;
+        font-weight: 500;
         margin-bottom: 2rem;
         text-align: center;
+
+        @media (max-width: 480px) {
+          font-size: 1.8rem;
+          margin-bottom: 1rem;
+        }
       }
     }
-    
+
     .header_description {
       font-size: 1.2rem;
       line-height: 1.6;
       margin-bottom: 2rem;
     }
-    
+
     .header_button {
       &__button {
         background-color: #005028;
@@ -58,11 +66,11 @@
         align-self: center;
         min-width: 200px;
         margin-top: 1rem;
-    
+
         &:hover:not(:disabled) {
           background-color: darken(#005028, 10%);
         }
-    
+
         &:disabled {
           background-color: #ccc;
           cursor: not-allowed;
@@ -119,6 +127,20 @@
 .container {
   width: 100%;
   height: 100%;
+  padding-left: 5rem;
+  padding-right: 5rem;
+
+  @media (max-width: 1024px) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+
 }
 
 
@@ -129,7 +151,9 @@
   justify-content: center;
   width: 100%;
 
- 
+  @media (max-width: 480px) {
+    margin: -40px 0px 20px 0px;
+  }
 }
 
 .card {
@@ -138,14 +162,23 @@
   background: #fff;
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  max-width: 1000px;
   width: 100%;
-  min-height: 100%;
-  align-items: stretch;
   min-height: 80vh;
   padding-left: 20px;
   max-width: 1320px;
   display: flex;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding-left: 15px;
+    padding-right: 15px;
+    min-height: auto;
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px;
+    min-height: auto;
+  }
 }
 
 .card_content {
@@ -156,14 +189,40 @@
   height: 100%;
   padding: 2rem;
 
+  @media (max-width: 768px) {
+    order: 2;
+    width: calc(100% - 30px);
+    margin: 0 auto;
+    padding: 1.5rem 0;
+  }
+
   h1 {
     font-size: 1.5rem;
     padding: 0 20px;
+
+    @media (max-width: 768px) {
+      padding: 0;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1.2rem;
+      padding: 0 10px;
+    }
   }
 
   p {
     line-height: 1.6;
     padding: 0 20px;
+
+    @media (max-width: 768px) {
+      padding: 0;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 0.9rem;
+      padding: 0 10px;
+      line-height: 1.4;
+    }
   }
 }
 
@@ -174,6 +233,12 @@
   border-radius: 0 4px 4px 0;
   margin: 0;
   padding: 0;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    order: 1;
+    border-radius: 4px 4px 0 0;
+  }
 }
 
 .section_header {
@@ -192,11 +257,11 @@
     letter-spacing: 0.3em;
     font-weight: 300;
     padding: 0 20px;
-    
+
     @media (min-width: 768px) {
       font-size: 1.875rem;
     }
   }
 
-  
+
 }

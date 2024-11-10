@@ -1,6 +1,5 @@
-import './PrivacyPolitics.scss';
-
-export const PrivacyPolitics = () => {
+import './PrivacyPolicy.scss';
+export const PrivacyPolicy = () => {
     return (
         <div className="privacy">
             <h1 className="privacy__title">Polityka prywatności</h1>
