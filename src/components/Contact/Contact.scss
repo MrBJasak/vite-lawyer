@@ -4,9 +4,9 @@
   padding: 2rem;
 
   &__main-title {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
   }
 
   &__content {
@@ -47,7 +47,7 @@
       &--link {
         color: #005028;
         text-decoration: none;
-        
+
         &:hover {
           text-decoration: underline;
         }
@@ -92,6 +92,7 @@
   }
 
   &__field {
+
     input,
     select,
     textarea {
@@ -163,7 +164,7 @@
     margin-top: 1rem;
 
     &:hover:not(:disabled) {
-      background-color: darken(#005028, 10%);
+      background-color: #003d1f;
     }
 
     &:disabled {
@@ -176,4 +177,4 @@
   &__form-section {
     margin-top: 6rem;
   }
-} 
+}
