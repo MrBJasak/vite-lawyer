@@ -7,7 +7,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
     <>
       <NavBar />
       <div>{children}</div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

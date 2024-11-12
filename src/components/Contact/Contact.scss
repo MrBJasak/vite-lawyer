@@ -92,7 +92,6 @@
   }
 
   &__field {
-
     input,
     select,
     textarea {
@@ -135,7 +134,7 @@
     color: #666;
     margin-top: 1rem;
 
-    input[type="checkbox"] {
+    input[type='checkbox'] {
       margin-top: 0.25rem;
       min-width: 1rem;
       height: 1rem;
