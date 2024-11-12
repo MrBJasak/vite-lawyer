@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button } from '../Button/Buttons';
+import { Button } from '../../components/Button/Buttons';
 import './Contact.scss';
 
 export const Contact = () => {

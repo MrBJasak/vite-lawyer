@@ -1,4 +1,4 @@
-import { Contact } from '../components/Contact/Contact';
+import { Contact } from '../pages/Contact/Contact';
 
 export const ContactContainer = () => {
   return <Contact />;

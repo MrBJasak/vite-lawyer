@@ -1,11 +1,11 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { AboutContainer } from './containers/AboutContainer';
-// import { BlogContainer } from './containers/BlogContainer';
 import { ContactContainer } from './containers/ContactContainer';
 import { HomeContainer } from './containers/HomeContainer';
 import { PrivacyPolicyContainer } from './containers/PrivacyPoliticsContainer';
-
+import { ServicesContainer } from './containers/ServicesContainer';
+// import { BlogContainer } from './containers/BlogContainer';
 function App() {
   return (
     <Router>
@@ -13,7 +13,7 @@ function App() {
         <Routes>
           <Route path='/' element={<HomeContainer />} /> {/* Strona Główna */}
           <Route path='/o-mnie' element={<AboutContainer />} /> {/* O mnie */}
-          {/* <Route path="/zakres-uslug" element={<ServicesContainer />} /> Zakres usług */}
+          <Route path='/zakres-uslug' element={<ServicesContainer />} /> {/* Zakres usług */}
           {/* <Route path="/honorarium" element={<PricingContainer />} /> Honorarium */}
           {/* <Route path="/wspolpraca" element={<CooperationContainer />} /> Współpraca */}
           {/* <Route path="/blog" element={<BlogContainer />} /> Blog */}

@@ -1,6 +1,7 @@
 import image from '../../assets/agnieszka_marynarka.png';
-import { Button } from '../Button/Buttons';
-import { Divider } from '../Divider/Divider';
+import { Button } from '../../components/Button/Buttons';
+import { Divider } from '../../components/Divider/Divider';
+
 import './styles.scss';
 
 export const Home = () => (
