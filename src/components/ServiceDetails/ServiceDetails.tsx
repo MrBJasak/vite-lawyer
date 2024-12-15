@@ -59,7 +59,6 @@ export const ServiceDetails: React.FC<ServiceDetailsProps> = ({ services }) => {
           <ul className='service-details__list'>
             {detailsTrail.map((props, index) => (
               <animated.li key={index} style={props} className='service-details__list-item'>
-                <span className='service-details__bullet'>•</span>
                 {service.details[index]}
               </animated.li>
             ))}
