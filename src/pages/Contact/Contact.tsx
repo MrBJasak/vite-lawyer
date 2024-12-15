@@ -1,9 +1,38 @@
+import { animated, useSpring, useTrail } from '@react-spring/web';
 import { useState } from 'react';
+import { AnimatedTitle } from '../../components/AnimatedTitle/AnimatedTitle';
 import { Button } from '../../components/Button/Buttons';
 import './Contact.scss';
 
 export const Contact = () => {
   const [isPrivacyAccepted, setIsPrivacyAccepted] = useState(false);
+
+  const fadeIn = useSpring({
+    from: { opacity: 0, y: 30 },
+    to: { opacity: 1, y: 0 },
+    config: { tension: 280, friction: 20 },
+  });
+
+  const infoItems = [
+    { label: 'Telefon:', value: '665-643-337' },
+    { label: 'E-Mail:', value: 'adwokat.agnieszka.jasak@gmail.com', isLink: true },
+    { label: 'Rachunek Bankowy:', value: '77 1160 2202 0000 0006 3117 0464' },
+    { label: 'NIP:', value: '772 243 79 97' },
+    { label: 'REGON:', value: '52 362560 9' },
+  ];
+
+  const trails = useTrail(infoItems.length, {
+    from: { opacity: 0, x: -20 },
+    to: { opacity: 1, x: 0 },
+    config: { mass: 1, tension: 280, friction: 20 },
+  });
+
+  const formSpring = useSpring({
+    from: { opacity: 0, scale: 0.9 },
+    to: { opacity: 1, scale: 1 },
+    config: { tension: 280, friction: 20 },
+    delay: 300,
+  });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -11,42 +40,29 @@ export const Contact = () => {
   };
 
   return (
-    <div className='contact'>
-      <h1 className='contact__main-title'>Kontakt</h1>
+    <animated.div className='contact' style={fadeIn}>
+      <AnimatedTitle>Kontakt</AnimatedTitle>
       <div className='contact__content'>
         <div className='contact__info-container'>
           <div className='contact__info'>
-            <div className='contact__info-item'>
-              <span className='contact__info-label'>Telefon:</span>
-              <span className='contact__info-value'>665-643-337</span>
-            </div>
-            <div className='contact__info-item'>
-              <span className='contact__info-label'>E-Mail:</span>
-              <a
-                href='mailto:adwokat.agnieszka.jasak@gmail.com'
-                className='contact__info-value contact__info-value--link'
-              >
-                adwokat.agnieszka.jasak@gmail.com
-              </a>
-            </div>
-
-            <div className='contact__info-item'>
-              <span className='contact__info-label'>Rachunek Bankowy:</span>
-              <span className='contact__info-value'>77 1160 2202 0000 0006 3117 0464</span>
-            </div>
-
-            <div className='contact__info-item'>
-              <span className='contact__info-label'>NIP:</span>
-              <span className='contact__info-value'>772 243 79 97</span>
-            </div>
-
-            <div className='contact__info-item'>
-              <span className='contact__info-label'>REGON:</span>
-              <span className='contact__info-value'>52 362560 9</span>
-            </div>
+            {trails.map((props, index) => (
+              <animated.div key={index} style={props} className='contact__info-item'>
+                <span className='contact__info-label'>{infoItems[index].label}</span>
+                {infoItems[index].isLink ? (
+                  <a
+                    href={`mailto:${infoItems[index].value}`}
+                    className='contact__info-value contact__info-value--link'
+                  >
+                    {infoItems[index].value}
+                  </a>
+                ) : (
+                  <span className='contact__info-value'>{infoItems[index].value}</span>
+                )}
+              </animated.div>
+            ))}
           </div>
 
-          <div className='contact__map'>
+          <animated.div className='contact__map' style={fadeIn}>
             <iframe
               src='https://www.google.com/maps/embed?pb=YOUR_MAPS_EMBED_URL'
               width='100%'
@@ -56,10 +72,10 @@ export const Contact = () => {
               loading='lazy'
               referrerPolicy='no-referrer-when-downgrade'
             />
-          </div>
+          </animated.div>
         </div>
 
-        <div className='contact__form-section'>
+        <animated.div className='contact__form-section' id='contact-form' style={formSpring}>
           <h1 className='contact__main-title'>Skontaktuj się z kancelarią</h1>
           <p className='contact__subtitle'>Chętnie pomożemy bezpiecznie załatwić Twoją sprawę - zostaw kontakt.</p>
 
@@ -106,8 +122,8 @@ export const Contact = () => {
               WYŚLIJ
             </Button>
           </form>
-        </div>
+        </animated.div>
       </div>
-    </div>
+    </animated.div>
   );
 };

@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import { FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaLinkedin } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 import { MdFacebook } from 'react-icons/md';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo/Logo.jpg';
 import { Button } from '../Button/Buttons';
 import './style.scss';
@@ -11,6 +12,7 @@ import { navItems, topBarItems, TopBarListProps } from './types';
 export const NavBar = () => {
   const [isSticky, setIsSticky] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -36,7 +38,7 @@ export const NavBar = () => {
             <div className='top-bar-buttons'>
               <SocialIcons />
               <div>
-                <Button>Umów się</Button>
+                <Button onClick={() => navigate('/kontakt')}>Umów się</Button>
               </div>
             </div>
           </div>
@@ -115,7 +117,7 @@ const SocialIcons = () => {
 
   const socialIcons = [
     { name: 'facebook', icon: <MdFacebook style={iconStyle} />, link: 'https://facebook.com' },
-    { name: 'twitter', icon: <FaTwitter style={iconStyle} />, link: 'https://twitter.com' },
+    { name: 'x', icon: <FaXTwitter style={iconStyle} />, link: 'https://x.com' },
     { name: 'linkedin', icon: <FaLinkedin style={iconStyle} />, link: 'https://linkedin.com' },
   ];
 

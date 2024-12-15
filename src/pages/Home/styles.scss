@@ -260,3 +260,80 @@
     }
   }
 }
+
+.about_me_content {
+  .about_me_paragraph {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .services_list,
+  .law_areas_list {
+    margin: 1rem 0;
+    padding-left: 2rem;
+
+    li {
+      list-style-type: disc;
+      margin: 0.2rem 0;
+    }
+  }
+
+  .signature {
+    margin-top: 2rem;
+    text-align: right;
+    font-style: italic;
+    color: #005028;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 15px;
+
+    .about_me_paragraph {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 0.8rem;
+    }
+
+    .services_list,
+    .law_areas_list {
+      margin: 0.8rem 0;
+      padding-left: 1.5rem;
+
+      li {
+        font-size: 0.95rem;
+        margin: 0.15rem 0;
+      }
+    }
+
+    .signature {
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 10px;
+
+    .about_me_paragraph {
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin-bottom: 0.7rem;
+    }
+
+    .services_list,
+    .law_areas_list {
+      margin: 0.7rem 0;
+      padding-left: 1.2rem;
+
+      li {
+        font-size: 0.9rem;
+        margin: 0.1rem 0;
+      }
+    }
+
+    .signature {
+      margin-top: 1.2rem;
+      font-size: 0.9rem;
+    }
+  }
+}

@@ -1,8 +1,9 @@
+import { AnimatedTitle } from '../../components/AnimatedTitle/AnimatedTitle';
 import './PrivacyPolicy.scss';
 export const PrivacyPolicy = () => {
   return (
     <div className='privacy'>
-      <h1 className='privacy__title'>Polityka prywatności</h1>
+      <AnimatedTitle>Polityka prywatności</AnimatedTitle>
 
       <section className='privacy__section'>
         <h2>I. Postanowienia ogólne</h2>
