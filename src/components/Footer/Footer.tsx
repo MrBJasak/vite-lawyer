@@ -1,7 +1,7 @@
 import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import image from '../../../public/logo.jpg';
-import './Footer.scss';
+import './styles.scss';
 export const Footer = () => {
   return (
     <footer className='footer'>

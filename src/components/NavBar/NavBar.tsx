@@ -6,7 +6,7 @@ import { MdFacebook } from 'react-icons/md';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo/Logo.jpg';
 import { Button } from '../Button/Buttons';
-import './style.scss';
+import './styles.scss';
 import { navItems, topBarItems, TopBarListProps } from './types';
 
 export const NavBar = () => {

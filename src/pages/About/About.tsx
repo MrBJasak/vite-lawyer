@@ -2,7 +2,7 @@ import { animated, useSpring } from '@react-spring/web';
 import aboutImage from '../../assets/aga.png';
 import { AnimatedTitle } from '../../components/AnimatedTitle/AnimatedTitle';
 import { Certificates } from '../Certificates/Certificates';
-import './About.scss';
+import './styles.scss';
 
 export const About = () => {
   const imageAnimation = useSpring({

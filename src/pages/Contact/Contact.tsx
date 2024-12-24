@@ -2,7 +2,7 @@ import { animated, useSpring, useTrail } from '@react-spring/web';
 import { useState } from 'react';
 import { AnimatedTitle } from '../../components/AnimatedTitle/AnimatedTitle';
 import { Button } from '../../components/Button/Buttons';
-import './Contact.scss';
+import './styles.scss';
 
 export const Contact = () => {
   const [isPrivacyAccepted, setIsPrivacyAccepted] = useState(false);

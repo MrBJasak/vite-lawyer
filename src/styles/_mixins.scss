@@ -6,3 +6,9 @@ $media: (
   xxl: 1250px,
   xxxl: 1536px,
 );
+
+@mixin media($size) {
+  @media (min-width: map-get($media, $size)) {
+    @content;
+  }
+}

@@ -7,6 +7,44 @@ import './styles.scss';
 import { animated, useSpring } from '@react-spring/web';
 import { useEffect } from 'react';
 
+const TEXTS = {
+  header: {
+    mainTitle: 'KANCELARIA ADWOKACKA',
+    subTitle: 'AGNIESZKA JASAK',
+    description: 'Zapewniam profesjonalną i rzetelną obsługę w zakresie wszystkich czynności prawnych.',
+    button: 'UMÓW SIĘ',
+  },
+  aboutMe: {
+    paragraphs: [
+      'Szanowni Państwo, serdecznie witam na stronie mojej Kancelarii Adwokackiej. 7 października 2024 r. w ramach jednoosobowej działalności gospodarczej jako adwokat aktywnie wykonujący zawód, rozpoczęłam prowadzenie własnej Kancelarii Adwokackiej.',
+      'Moim priorytetem jest indywidualne podejście do klienta oraz dbałość o jego interesy. Gwarantuję uważne wsłuchanie się w Państwa problemy, potrzeby i pytania. Angażując się w każdą sprawę indywidualnie, przewiduje jej ewentualny przebieg, proponując skuteczne rozwiązania.',
+    ],
+    services: {
+      intro: 'W ramach swoich usług oferuję obsługę:',
+      list: ['klientów indywidualnych', 'podmiotów gospodarczych', 'organizacji'],
+    },
+    lawAreas: {
+      intro: 'Moja praktyka obejmuje sprawy z zakresu:',
+      list: [
+        'prawa cywilnego',
+        'prawa rodzinnego',
+        'prawa własności intelektualnej',
+        'prawa pracy',
+        'prawa gospodarczego',
+        'prawa upadłościowego (w tym sprawy o ogłoszenie upadłości konsumenckiej)',
+        'prawa administracyjnego',
+        'prawa karnego',
+      ],
+    },
+    closing:
+      'Nieustannie staram się pogłębiać swoją wiedzę. Mam nadzieję, że obdarzą Państwo moją Kancelarię Adwokacką zaufaniem, powierzając swoją sprawę do prowadzenia.',
+    signature: {
+      text: 'Serdecznie zapraszam do współpracy,',
+      name: 'Adwokat Agnieszka Jasak',
+    },
+  },
+};
+
 export const Home = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -60,17 +98,17 @@ export const Home = () => {
         <div className='header_content'>
           <div className='header_titles'>
             <animated.h2 className='header_main_title' style={titleAnimation}>
-              KANCELARIA ADWOKACKA
+              {TEXTS.header.mainTitle}
             </animated.h2>
             <animated.h3 className='header_sub_title' style={subtitleAnimation}>
-              AGNIESZKA JASAK
+              {TEXTS.header.subTitle}
             </animated.h3>
           </div>
           <animated.p className='header_description' style={descriptionAnimation}>
-            Zapewniam profesjonalną i rzetelną obsługę w zakresie wszystkich czynności prawnych.
+            {TEXTS.header.description}
           </animated.p>
           <Button className='header_button' onClick={() => navigate('/kontakt#contact-form')}>
-            UMÓW SIĘ
+            {TEXTS.header.button}
           </Button>
         </div>
       </animated.div>
@@ -79,50 +117,36 @@ export const Home = () => {
           <animated.div className='card' style={fadeIn}>
             <div className='card_content'>
               <div className='about_me_content'>
-                <p className='about_me_paragraph'>
-                  Szanowni Państwo, serdecznie witam na stronie mojej Kancelarii Adwokackiej. 7 listopada minie
-                  dokładnie miesiąc odkąd, w ramach jednoosobowej działalności gospodarczej jako adwokat aktywnie
-                  wykonujący zawód, rozpoczęłam prowadzenie własnej Kancelarii Adwokackiej.
-                </p>
+                {TEXTS.aboutMe.paragraphs.map((paragraph, index) => (
+                  <p key={index} className='about_me_paragraph'>
+                    {paragraph}
+                  </p>
+                ))}
 
                 <p className='about_me_paragraph'>
-                  Moim priorytetem jest indywidualne podejście do klienta oraz dbałość o jego interesy. Gwarantuję
-                  uważne wsłuchanie się w Państwa problemy, potrzeby i pytania. Angażując się w każdą sprawę
-                  indywidualnie, przewiduje jej ewentualny przebieg, proponując skuteczne rozwiązania.
-                </p>
-
-                <p className='about_me_paragraph'>
-                  W ramach swoich usług oferuję obsługę:
+                  {TEXTS.aboutMe.services.intro}
                   <ul className='services_list'>
-                    <li>klientów indywidualnych</li>
-                    <li>podmiotów gospodarczych</li>
-                    <li>organizacji</li>
+                    {TEXTS.aboutMe.services.list.map((service, index) => (
+                      <li key={index}>{service}</li>
+                    ))}
                   </ul>
                 </p>
 
                 <p className='about_me_paragraph'>
-                  Moja praktyka obejmuje sprawy z zakresu:
+                  {TEXTS.aboutMe.lawAreas.intro}
                   <ul className='law_areas_list'>
-                    <li>prawa cywilnego</li>
-                    <li>prawa rodzinnego</li>
-                    <li>prawa własności intelektualnej</li>
-                    <li>prawa pracy</li>
-                    <li>prawa gospodarczego</li>
-                    <li>prawa upadłościowego (w tym sprawy o ogłoszenie upadłości konsumenckiej)</li>
-                    <li>prawa administracyjnego</li>
-                    <li>prawa karnego</li>
+                    {TEXTS.aboutMe.lawAreas.list.map((area, index) => (
+                      <li key={index}>{area}</li>
+                    ))}
                   </ul>
                 </p>
 
-                <p className='about_me_paragraph'>
-                  Nieustannie staram się pogłębiać swoją wiedzę. Mam nadzieję, że obdarzą Państwo moją Kancelarię
-                  Adwokacką zaufaniem, powierzając swoją sprawę do prowadzenia.
-                </p>
+                <p className='about_me_paragraph'>{TEXTS.aboutMe.closing}</p>
 
                 <p className='about_me_paragraph signature'>
-                  Serdecznie zapraszam do współpracy,
+                  {TEXTS.aboutMe.signature.text}
                   <br />
-                  Adwokat Agnieszka Jasak
+                  {TEXTS.aboutMe.signature.name}
                 </p>
               </div>
             </div>

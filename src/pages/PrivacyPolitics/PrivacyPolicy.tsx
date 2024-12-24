@@ -1,5 +1,5 @@
 import { AnimatedTitle } from '../../components/AnimatedTitle/AnimatedTitle';
-import './PrivacyPolicy.scss';
+import './styles.scss';
 export const PrivacyPolicy = () => {
   return (
     <div className='privacy'>

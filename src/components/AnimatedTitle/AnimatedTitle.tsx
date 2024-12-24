@@ -1,5 +1,5 @@
 import { animated, useSpring } from '@react-spring/web';
-import './AnimatedTitle.scss';
+import './styles.scss';
 
 interface AnimatedTitleProps {
   children: React.ReactNode;

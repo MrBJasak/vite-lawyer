@@ -2,7 +2,7 @@ import { animated, useTrail } from '@react-spring/web';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
 import { AnimatedTitle } from '../../components/AnimatedTitle/AnimatedTitle';
-import './Services.scss';
+import './styles.scss';
 
 interface LegalService {
   id: number;
