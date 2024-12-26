@@ -1,11 +1,12 @@
 import { animated, useTrail } from '@react-spring/web';
 import certificate1 from './../../assets/certificates/certyfikat1.jpeg';
+import certificate2 from './../../assets/certificates/certyfikat2.jpg';
 
 import { AnimatedTitle } from '../../components/AnimatedTitle/AnimatedTitle';
 import './styles.scss';
 
 export const Certificates = () => {
-  const images = [certificate1];
+  const images = [certificate2, certificate1];
 
   const trail = useTrail(images.length, {
     from: { opacity: 0, transform: 'translateY(20px)' },
