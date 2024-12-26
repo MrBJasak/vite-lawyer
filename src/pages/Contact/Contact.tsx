@@ -13,7 +13,7 @@ export const Contact = () => {
     config: { tension: 280, friction: 20 },
   });
 
-  const infoItems = [
+  const infoItems: { label: string; value: string; isLink?: boolean }[] = [
     { label: 'Telefon:', value: '665-643-337' },
     { label: 'E-Mail:', value: 'adwokat.agnieszka.jasak@gmail.com', isLink: true },
     { label: 'Rachunek Bankowy:', value: '77 1160 2202 0000 0006 3117 0464' },
@@ -33,6 +33,13 @@ export const Contact = () => {
     config: { tension: 280, friction: 20 },
     delay: 300,
   });
+
+  const topicOptions = [
+    { value: 'konsultacja', label: 'Konsultacja prawna' },
+    { value: 'reprezentacja', label: 'Reprezentacja w sądzie' },
+    { value: 'dokumenty', label: 'Przygotowanie dokumentów' },
+    { value: 'inne', label: 'Inne' },
+  ];
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -92,10 +99,11 @@ export const Contact = () => {
               <div className='contact__field'>
                 <select id='topic' required>
                   <option value=''>-- Wybierz temat --</option>
-                  <option value='konsultacja'>Konsultacja prawna</option>
-                  <option value='reprezentacja'>Reprezentacja w sądzie</option>
-                  <option value='dokumenty'>Przygotowanie dokumentów</option>
-                  <option value='inne'>Inne</option>
+                  {topicOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div className='contact__field'>

@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import { FaLinkedin } from 'react-icons/fa';
-import { FaXTwitter } from 'react-icons/fa6';
-import { MdFacebook } from 'react-icons/md';
+import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo/Logo.jpg';
 import { Button } from '../Button/Buttons';
 import './styles.scss';
-import { navItems, topBarItems, TopBarListProps } from './types';
+import { getHref, navItems, topBarItems, TopBarListProps } from './types';
 
 export const NavBar = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -87,7 +85,7 @@ const TopBarList = ({ items }: { items: TopBarListProps }) => {
       {items.map((item, index) => (
         <div key={index} className='topbar-item'>
           {item.icon}
-          <a href={item.href} className={item.type !== 'time' ? 'link' : 'no-cursor'}>
+          <a href={getHref(item)} className={item.type === 'time' ? 'no-cursor' : 'link'}>
             {item.value}
           </a>
           {index !== items.length - 1 && <span className='separator'>&middot;</span>}
@@ -116,9 +114,21 @@ const SocialIcons = () => {
   };
 
   const socialIcons = [
-    { name: 'facebook', icon: <MdFacebook style={iconStyle} />, link: 'https://facebook.com' },
-    { name: 'x', icon: <FaXTwitter style={iconStyle} />, link: 'https://x.com' },
-    { name: 'linkedin', icon: <FaLinkedin style={iconStyle} />, link: 'https://linkedin.com' },
+    {
+      name: 'linkedin',
+      icon: <FaLinkedin style={iconStyle} />,
+      link: 'https://www.linkedin.com/in/agnieszka-jasak-7b5861170/',
+    },
+    {
+      name: 'facebook',
+      icon: <FaFacebook style={iconStyle} />,
+      link: 'https://www.facebook.com/profile.php?id=61566701225521',
+    },
+    {
+      name: 'instagram',
+      icon: <FaInstagram style={iconStyle} />,
+      link: 'https://www.instagram.com/adwokat_agnieszka_jasak',
+    },
   ];
 
   return (

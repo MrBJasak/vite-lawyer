@@ -45,6 +45,33 @@ const TEXTS = {
   },
 };
 
+const ANIMATION_CONFIG = {
+  DEFAULT: {
+    tension: 280,
+    friction: 60,
+  },
+  DELAYS: {
+    HEADER: 200,
+    TITLE: 400,
+    SUBTITLE: 600,
+    DESCRIPTION: 800,
+  },
+  TRANSFORMS: {
+    FADE_IN: {
+      from: { opacity: 0, transform: 'translateY(20px)' },
+      to: { opacity: 1, transform: 'translateY(0)' },
+    },
+    HEADER: {
+      from: { opacity: 0, transform: 'translateY(-50px)' },
+      to: { opacity: 1, transform: 'translateY(0)' },
+    },
+    SIDE_ELEMENTS: {
+      from: { opacity: 0, transform: 'translateX(-50px)' },
+      to: { opacity: 1, transform: 'translateX(0)' },
+    },
+  },
+} as const;
+
 export const Home = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -59,37 +86,32 @@ export const Home = () => {
   }, [location]);
 
   const fadeIn = useSpring({
-    from: { opacity: 0, transform: 'translateY(20px)' },
-    to: { opacity: 1, transform: 'translateY(0)' },
-    config: { tension: 280, friction: 60 },
+    ...ANIMATION_CONFIG.TRANSFORMS.FADE_IN,
+    config: ANIMATION_CONFIG.DEFAULT,
   });
 
   const headerAnimation = useSpring({
-    from: { opacity: 0, transform: 'translateY(-50px)' },
-    to: { opacity: 1, transform: 'translateY(0)' },
-    delay: 200,
-    config: { tension: 280, friction: 60 },
+    ...ANIMATION_CONFIG.TRANSFORMS.HEADER,
+    delay: ANIMATION_CONFIG.DELAYS.HEADER,
+    config: ANIMATION_CONFIG.DEFAULT,
   });
 
   const titleAnimation = useSpring({
-    from: { opacity: 0, transform: 'translateX(-50px)' },
-    to: { opacity: 1, transform: 'translateX(0)' },
-    delay: 400,
-    config: { tension: 280, friction: 60 },
+    ...ANIMATION_CONFIG.TRANSFORMS.SIDE_ELEMENTS,
+    delay: ANIMATION_CONFIG.DELAYS.TITLE,
+    config: ANIMATION_CONFIG.DEFAULT,
   });
 
   const subtitleAnimation = useSpring({
-    from: { opacity: 0, transform: 'translateX(-50px)' },
-    to: { opacity: 1, transform: 'translateX(0)' },
-    delay: 600,
-    config: { tension: 280, friction: 60 },
+    ...ANIMATION_CONFIG.TRANSFORMS.SIDE_ELEMENTS,
+    delay: ANIMATION_CONFIG.DELAYS.SUBTITLE,
+    config: ANIMATION_CONFIG.DEFAULT,
   });
 
   const descriptionAnimation = useSpring({
-    from: { opacity: 0, transform: 'translateX(-50px)' },
-    to: { opacity: 1, transform: 'translateX(0)' },
-    delay: 800,
-    config: { tension: 280, friction: 60 },
+    ...ANIMATION_CONFIG.TRANSFORMS.SIDE_ELEMENTS,
+    delay: ANIMATION_CONFIG.DELAYS.DESCRIPTION,
+    config: ANIMATION_CONFIG.DEFAULT,
   });
 
   return (
